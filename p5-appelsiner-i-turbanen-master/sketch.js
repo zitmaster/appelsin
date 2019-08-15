@@ -30,7 +30,11 @@ function setup() {
     newspeed = yspeed;
     x = rad;
     turban = new Kurv(670, 100, 70, 80, 30);
+<<<<<<< HEAD
     appelsin = new Appelsin(x,y,rad,rad);
+=======
+    appelsin = new Appelsin(x, y, rad*2, rad*2);
+>>>>>>> c62ce72a787881d39f6a7acdc749c006a3425a20
 }
 
 function draw() {
@@ -54,9 +58,13 @@ function display() {
         tid -= 1;
     }
     if (tid < 100) {
+<<<<<<< HEAD
         fill(this.col);
         ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
         //appelsin.tegn();
+=======
+        appelsin.tegn();
+>>>>>>> c62ce72a787881d39f6a7acdc749c006a3425a20
     }
     
     // Her vises turbanen - foreløbig blot en firkant
@@ -87,7 +95,12 @@ function move(){
         shootNew();
     }
 }
+<<<<<<< HEAD
 //function checkAppelsinerSomIkkeErGrebet(){
+=======
+
+//function checkApppelsinerSomIkkeErGrebet(){
+>>>>>>> c62ce72a787881d39f6a7acdc749c006a3425a20
 //  if (x > width || y > height) {
 //    apppelsinerSomIkkeErGrebet += 1;
 //      shootNew();
@@ -96,11 +109,17 @@ function move(){
 
 function shootNew() {
     //Her skal vi sørge for at en ny appelsin skydes afsted 
-    x = rad;
+        x = rad;
         y = 550;
         yspeed = newspeed;
+<<<<<<< HEAD
         xspeed = 2 * Math.random(4,8);
+=======
+        xspeed = 1 * Math.random()+5;
+>>>>>>> c62ce72a787881d39f6a7acdc749c006a3425a20
         tid = (int)(Math.random() * 400);
+        //console.log(yspeed);
+        //console.log(tid);
 
 }
 
