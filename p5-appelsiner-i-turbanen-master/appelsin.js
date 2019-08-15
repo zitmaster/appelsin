@@ -11,13 +11,12 @@ function Appelsin() {
 
     this.tid = 150;
 
-<<<<<<< HEAD
     /*this.tegn = function () {
             fill(this.col);
             ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
         
     }*/
-=======
+
     this.newspeed = this.yspeed;
     this.x = this.rad;
 
@@ -25,7 +24,7 @@ function Appelsin() {
             fill(this.col);
             ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
     }
->>>>>>> c62ce72a787881d39f6a7acdc749c006a3425a20
+
 
     //this.appelsinMove = function () {    }
 
