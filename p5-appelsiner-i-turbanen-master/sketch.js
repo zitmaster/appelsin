@@ -20,7 +20,7 @@ var appelsin;
 // Øvrige
 var tid = 150;
 var score = 0;
-var apppelsinerSomIkkeErGrebet = 1;
+var apppelsinerSomIkkeErGrebet = 0;
 
 /* 
  * 
@@ -35,12 +35,12 @@ function setup() {
 
 function draw() {
     background(0);
-    appelsin.appelsinMove();
+    //appelsin.appelsinMove();
     checkScore();
-    appelsin.ikkeDisplay();
+    move();
     display();
     turban.move();
-    appelsin.shootNewApp();
+    //appelsin.shootNewApp();
     // checkApppelsinerSomIkkeErGrebet();
 }
 
@@ -50,7 +50,14 @@ function display() {
     text("apppelsinerSomIkkeErGrebet: " + apppelsinerSomIkkeErGrebet, width - 200, 50);
 
     //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
-    appelsin.ikkeDisplay();
+    if (tid = 0) {
+        tid -= 1;
+    }
+    if (tid < 100) {
+        fill(col);
+        ellipse(x, y, rad * 2, rad * 2);
+    }
+    
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
 
@@ -65,10 +72,19 @@ function checkScore() {
             shootNew();
         }
     }
+    
 }
 
 function move(){
-    appelsin.appelsinMove();
+    if (tid <= 0) {
+        x += xspeed;
+        y += yspeed;
+        yspeed += grav;
+     }
+     if (x > width || y > height) {
+        apppelsinerSomIkkeErGrebet += 1;
+        shootNew();
+    }
 }
 //function checkApppelsinerSomIkkeErGrebet(){
 //  if (x > width || y > height) {
@@ -79,7 +95,11 @@ function move(){
 
 function shootNew() {
     //Her skal vi sørge for at en ny appelsin skydes afsted 
-    appelsin.shootNewApp();
+    x = rad;
+        y = 550;
+        yspeed = newspeed;
+        xspeed = 6 * Math.random();
+        tid = (int)(Math.random() * 400);
 
 }
 
