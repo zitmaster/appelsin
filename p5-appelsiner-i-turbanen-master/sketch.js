@@ -30,7 +30,7 @@ function setup() {
     newspeed = yspeed;
     x = rad;
     turban = new Kurv(670, 100, 70, 80, 30);
-    appelsin = new Appelsin(670, 100, 70, 80, 30);
+    appelsin = new Appelsin(x, y, rad*2, rad*2);
 }
 
 function draw() {
@@ -41,7 +41,7 @@ function draw() {
     display();
     turban.move();
     //appelsin.shootNewApp();
-    // checkApppelsinerSomIkkeErGrebet();
+    // checkAppelsinerSomIkkeErGrebet();
 }
 
 function display() {
@@ -54,8 +54,7 @@ function display() {
         tid -= 1;
     }
     if (tid < 100) {
-        fill(col);
-        ellipse(x, y, rad * 2, rad * 2);
+        appelsin.tegn();
     }
     
     // Her vises turbanen - foreløbig blot en firkant
@@ -86,6 +85,7 @@ function move(){
         shootNew();
     }
 }
+
 //function checkApppelsinerSomIkkeErGrebet(){
 //  if (x > width || y > height) {
 //    apppelsinerSomIkkeErGrebet += 1;
@@ -95,11 +95,13 @@ function move(){
 
 function shootNew() {
     //Her skal vi sørge for at en ny appelsin skydes afsted 
-    x = rad;
+        x = rad;
         y = 550;
         yspeed = newspeed;
-        xspeed = 6 * Math.random();
+        xspeed = 1 * Math.random()+5;
         tid = (int)(Math.random() * 400);
+        //console.log(yspeed);
+        //console.log(tid);
 
 }
 
