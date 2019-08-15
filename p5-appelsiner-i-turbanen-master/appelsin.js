@@ -8,17 +8,14 @@ function Appelsin() {
     this.newspeed;
     this.grav = 0.1;
     this.col = [200, 100, 0];
+
     this.tid = 150;
     this.apppelsinerSomIkkeErGrebet = 1;
 
-    /*this.ikkeDisplay = function () {
-        if (this.tid > 0) {
-            this.tid -= 1;
-        }
-        if (this.tid < 100) {
+    /*this.tegn = function () {
             fill(this.col);
             ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
-        }
+        
     }*/
 
     //this.appelsinMove = function () {    }
