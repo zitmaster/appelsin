@@ -21,8 +21,8 @@ function Appelsin() {
     this.x = this.rad;
 
     this.tegn = function () {
-            fill(this.col);
-            ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
+        fill(this.col);
+        ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
     }
 
 

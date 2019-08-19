@@ -30,8 +30,8 @@ function setup() {
     newspeed = yspeed;
     x = rad;
     turban = new Kurv(670, 100, 70, 80, 30);
-    appelsin = new Appelsin(x,y,rad,rad);
-    appelsin = new Appelsin(x, y, rad*2, rad*2);
+    appelsin = new Appelsin(x, y, rad, rad);
+    appelsin = new Appelsin(x, y, rad * 2, rad * 2);
 }
 
 function draw() {
@@ -48,7 +48,7 @@ function draw() {
 function display() {
     fill(255);
     text("Score: " + score, width - 80, 30);
-    text("apppelsinerSomIkkeErGrebet: " + apppelsinerSomIkkeErGrebet, width - 200, 50);
+    text("Miss:   " + apppelsinerSomIkkeErGrebet, width - 80, 50);
 
     //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
     if (tid = 0) {
@@ -60,7 +60,7 @@ function display() {
         //appelsin.tegn();
         appelsin.tegn();
     }
-    
+
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
 
@@ -75,16 +75,16 @@ function checkScore() {
             shootNew();
         }
     }
-    
+
 }
 
-function move(){
+function move() {
     if (tid <= 0) {
         x += xspeed;
         y += yspeed;
         yspeed += grav;
-     }
-     if (x > width || y > height) {
+    }
+    if (x > width || y > height) {
         apppelsinerSomIkkeErGrebet += 1;
         shootNew();
     }
@@ -101,16 +101,16 @@ function move(){
 
 function shootNew() {
     //Her skal vi sørge for at en ny appelsin skydes afsted 
-        x = rad;
-        y = 550;
-        yspeed = newspeed;
+    x = rad;
+    y = 550;
+    yspeed = newspeed;
 
-        xspeed = 2 * Math.random(4,8);
-        xspeed = 1 * Math.random()+5;
+    xspeed = 2 * Math.random(4, 8);
+    xspeed = 1 * Math.random() + 5;
 
-        tid = (int)(Math.random() * 400);
-        //console.log(yspeed);
-        //console.log(tid);
+    tid = (int)(Math.random() * 400);
+    //console.log(yspeed);
+    //console.log(tid);
 
 }
 
