@@ -29,9 +29,9 @@ var dead = false;
 function setup() {
     header = createElement("h1", "Flying Balls");
     createCanvas(750, 600);
- 
-    turban = new Kurv(670, 100, 70, 80, 30);
-    appelsin = new Appelsin();
+    button = createButton("reset");
+    button.mouseClicked(restart);
+    restart();
     
 }
 
@@ -44,10 +44,15 @@ function draw() {
     fill(255);
     text("Score: " + score, width - 80, 30);
 
+    if(appelsin.apppelsinerSomIkkeErGrebet <= 0){
+        dead = true;
+        noLoop();
+    }
+
     if(dead){
         document.getElementById("status").innerHTML = "du er død";
-        button = createButton("reset");
-        button.mouseIsPressed("restart");
+        dead = false;
+        button.show();
     }
 }
 
@@ -85,7 +90,11 @@ function move(){
 
 
 function restart(){
-
+    turban = new Kurv(670, 100, 70, 80, 30);
+    appelsin = new Appelsin();
+    dead = false;
+    loop();
+    button.hide();
 }
 
 

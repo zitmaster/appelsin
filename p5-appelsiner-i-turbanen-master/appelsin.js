@@ -8,7 +8,7 @@ function Appelsin() {
     this.newspeed;
     this.grav = 0.1;
     this.col = [200, 100, 0];
-    this.apppelsinerSomIkkeErGrebet = 10;
+    this.apppelsinerSomIkkeErGrebet = 1;
 
     this.newspeed = this.yspeed;
     this.x = this.rad;
