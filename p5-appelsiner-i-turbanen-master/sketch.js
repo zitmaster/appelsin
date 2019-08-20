@@ -17,7 +17,7 @@ var appelsin;
 // Øvrige
 var tid = 150;
 var score = 0;
-
+var liv = 2;
 var header;
 
 var button;
@@ -43,7 +43,11 @@ function draw() {
     collude();
     fill(255);
     text("Score: " + score, width - 80, 30);
+    text("Liv: " + liv, width - 80, 50);
 
+    if(liv <= 0){
+        dead = true;
+    }
     if(dead){
         document.getElementById("status").innerHTML = "du er død";
         button = createButton("reset");
@@ -85,7 +89,7 @@ function move(){
 
 
 function restart(){
-
+ 
 }
 
 
