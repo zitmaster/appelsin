@@ -40,6 +40,7 @@ turban.collude();
 
 if(turban.collude()){
     score = score + 1;
+    appelsin.newshoot();
 }
 
 }

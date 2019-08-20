@@ -3,11 +3,7 @@
  */
 
 function Kurv(x, y, bredde, dybde, speed) {
-    /* Den første del af funktionen er en "konstruktør".
-     * Den tager parametrene og konstruerer et nyt objekt 
-     * ud fra dem. Værdierne huskes som hørende til netop 
-     * dette objekt ved hjælp af nøgleordet this
-     */
+
 
     this.x = x;
     this.y = y;
