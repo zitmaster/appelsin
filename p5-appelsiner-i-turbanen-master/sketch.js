@@ -6,7 +6,7 @@ Først laver vi et nogle variable til at lave en appelsin
 //document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
 function preload() {
-  turbanhoved = loadImage('flyttekasse.png');
+    turbanhoved = loadImage('flyttekasse.png');
 }
 
 // Turbanen og appelsinen
@@ -23,10 +23,10 @@ var score = 0;
 function setup() {
     createElement("h1", "Flying Balls");
     createCanvas(750, 600);
- 
+
     turban = new Kurv(670, 100, 70, 80, 30);
     appelsin = new Appelsin();
-    
+
 }
 
 function draw() {
@@ -41,12 +41,12 @@ function draw() {
 
 
 function collude(){
-turban.collude();
+    turban.collude();
 
-if(turban.collude()){
-    score = score + 1;
-    appelsin.newshoot();
-}
+    if(turban.collude()){
+        score = score + 1;
+        appelsin.newshoot();
+    }
 
 }
 
@@ -67,8 +67,8 @@ function display() {
 
 function move(){
     if (tid <= 0) {
-     appelsin.move();
-     }
+        appelsin.move();
+    }
 }
 
 
