@@ -3,6 +3,7 @@ Først laver vi et nogle variable til at lave en appelsin
  - en kugle som vi vil skyde afsted og fange i en turban
 */
 
+//document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
 function preload() {
   turbanhoved = loadImage('flyttekasse.png');
