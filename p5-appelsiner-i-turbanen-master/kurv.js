@@ -27,9 +27,10 @@ function Kurv(x, y, bredde, dybde, speed) {
     }
  /// FIX HIT FUCKERI BOIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIii
     this.collude = function(){
-    appelsin.appelsinx();
-    appelsin.appelsiny();
-    if(appelsin.appelsinx() > this.x - (this.bred/2) && appelsin.appelsinx() < this.x + (this.bred/2) && appelsin.appelsiny() > this.y - (this.dyb/2) && appelsin.appelsiny() > this.y + (this.dyb/2))
+        appelsin.appelsinyspeed();
+        appelsin.appelsinx();
+        appelsin.appelsiny();
+    if(appelsin.appelsinx() > this.x && appelsin.appelsinx() < this.x + this.bred && appelsin.appelsiny() > this.y && appelsin.appelsiny() < this.y + 10 && appelsin.appelsinyspeed() >= 0)
      return true;
     }
 
