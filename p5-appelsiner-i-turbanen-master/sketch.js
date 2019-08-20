@@ -44,7 +44,8 @@ function draw() {
     collude();
     fill(255);
     text("Score: " + score, width - 80, 30);
-    text("Liv: " + liv, width - 80, 50);
+    //text("Liv: " + liv, width - 80, 50);
+    text("miss: " + liv, width - 100, 50);
 
     if (dead) {
         document.getElementById("status").innerHTML = "du er død";
@@ -81,7 +82,9 @@ function display() {
 
 function move() {
     if (tid <= 0) {
-        appelsin.move();
+        if(appelsin.move()){
+            liv -= 1
+        }
     }
 }
 

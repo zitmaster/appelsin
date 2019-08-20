@@ -8,14 +8,13 @@ function Appelsin() {
     this.newspeed;
     this.grav = 0.1;
     this.col = [200, 100, 0];
-    
 
     this.newspeed = this.yspeed;
     this.x = this.rad;
 
     this.tegn = function () {
 
-        text("Liv: " + this.apppelsinerSomIkkeErGrebet, width - 80, 50);
+        //text("Liv: " + this.apppelsinerSomIkkeErGrebet, width - 80, 50);
         fill(this.col);
         ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
 
@@ -27,7 +26,9 @@ function Appelsin() {
         this.yspeed += this.grav;
         if (this.x > width || this.y > height) {
             this.newshoot();
-            this.apppelsinerSomIkkeErGrebet -= 1;
+            return true;
+        }else{
+            return false;
         }
     }
 
