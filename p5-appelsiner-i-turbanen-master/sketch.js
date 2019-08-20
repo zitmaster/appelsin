@@ -3,10 +3,11 @@ Først laver vi et nogle variable til at lave en appelsin
  - en kugle som vi vil skyde afsted og fange i en turban
 */
 
+
 //document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
 function preload() {
-    turbanhoved = loadImage('flyttekasse.png');
+  turbanhoved = loadImage('flyttekasse.png');
 }
 
 // Turbanen og appelsinen
@@ -17,16 +18,21 @@ var appelsin;
 var tid = 150;
 var score = 0;
 
+var header;
+
+var button;
+var dead = false;
+
 /* 
  * 
  */
 function setup() {
-    createElement("h1", "Flying Balls");
+    header = createElement("h1", "Flying Balls");
     createCanvas(750, 600);
-
+ 
     turban = new Kurv(670, 100, 70, 80, 30);
     appelsin = new Appelsin();
-
+    
 }
 
 function draw() {
@@ -37,16 +43,22 @@ function draw() {
     collude();
     fill(255);
     text("Score: " + score, width - 80, 30);
+
+    if(dead){
+        document.getElementById("status").innerHTML = "du er død";
+        button = createButton("reset");
+        button.mouseIsPressed("restart");
+    }
 }
 
 
 function collude(){
-    turban.collude();
+turban.collude();
 
-    if(turban.collude()){
-        score = score + 1;
-        appelsin.newshoot();
-    }
+if(turban.collude()){
+    score = score + 1;
+    appelsin.newshoot();
+}
 
 }
 
@@ -67,9 +79,15 @@ function display() {
 
 function move(){
     if (tid <= 0) {
-        appelsin.move();
-    }
+     appelsin.move();
+     }
 }
+
+
+function restart(){
+
+}
+
 
 
 
