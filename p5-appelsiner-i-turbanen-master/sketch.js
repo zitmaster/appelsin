@@ -49,7 +49,7 @@ function draw() {
     //text("Liv: " + liv, width - 80, 50);
     text("miss: " + liv, width - 100, 50);
 
-
+//Hvis du har 0 liv så taber du
     if(liv <= 0){
         dead = true;
         noLoop();
