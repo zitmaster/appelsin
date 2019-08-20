@@ -16,10 +16,12 @@ var score = 0;
  * 
  */
 function setup() {
+    createElement("h1", "Flying Balls");
     createCanvas(750, 600);
  
     turban = new Kurv(670, 100, 70, 80, 30);
     appelsin = new Appelsin();
+    
 }
 
 function draw() {
@@ -31,6 +33,7 @@ function draw() {
     fill(255);
     text("Score: " + this.score, width - 80, 30);
 }
+
 
 function collude(){
 turban.collude();
