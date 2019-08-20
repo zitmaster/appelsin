@@ -5,7 +5,7 @@ Først laver vi et nogle variable til at lave en appelsin
 
 var turbanhoved;
 function preload() {
-  turbanhoved = loadImage('kasse.jpg');
+  turbanhoved = loadImage('flyttekasse.png');
 }
 
 // Turbanen og appelsinen
