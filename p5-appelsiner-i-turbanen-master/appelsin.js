@@ -45,7 +45,7 @@ function Appelsin() {
 
     this.newshoot = function (){
         this.x = this.rad;
-        this.y = 550;
+        this.y = random(400,550);
         this.yspeed = this.newspeed;
         this.xspeed =   random(1.5,5);
     }

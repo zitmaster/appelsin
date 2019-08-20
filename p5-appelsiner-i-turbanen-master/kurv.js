@@ -25,7 +25,7 @@ function Kurv(x, y, bredde, dybde, speed) {
         this.x = mouseX - (this.bred/2);
         this.y = mouseY - (this.dyb/2);
     }
- /// FIX HIT FUCKERI BOIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIii
+
     this.collude = function(){
         appelsin.appelsinyspeed();
         appelsin.appelsinx();
