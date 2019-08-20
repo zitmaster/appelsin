@@ -9,7 +9,6 @@ function Appelsin() {
     this.grav = 0.1;
     this.col = [200, 100, 0];
     this.apppelsinerSomIkkeErGrebet = 0;
-    this.tid = 150;
 
     this.newspeed = this.yspeed;
     this.x = this.rad;
@@ -38,6 +37,10 @@ function Appelsin() {
 
     this.appelsiny = function(){
         return this.y;
+    }
+
+    this.appelsinyspeed = function(){
+        return this.yspeed;
     }
 
     this.newshoot = function (){
