@@ -31,7 +31,7 @@ function draw() {
     turban.move();
     collude();
     fill(255);
-    text("Score: " + this.score, width - 80, 30);
+    text("Score: " + score, width - 80, 30);
 }
 
 
