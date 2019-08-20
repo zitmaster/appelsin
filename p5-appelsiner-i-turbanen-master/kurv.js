@@ -14,7 +14,7 @@ function Kurv(x, y, bredde, dybde, speed) {
 
     this.tegn = function () {
         fill(this.col);
-        rect(this.x, this.y, this.bred, this.dyb);
+        image(turbanhoved,this.x, this.y, this.bred, this.dyb);
     }
     this.move = function () {
 
