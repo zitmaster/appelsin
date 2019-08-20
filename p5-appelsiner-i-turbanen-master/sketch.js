@@ -50,7 +50,7 @@ function draw() {
     text("miss: " + liv, width - 100, 50);
 
 
-    if(appelsin.apppelsinerSomIkkeErGrebet <= 0){
+    if(liv <= 0){
         dead = true;
         noLoop();
     }
