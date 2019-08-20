@@ -21,17 +21,16 @@ function Kurv(x, y, bredde, dybde, speed) {
         rect(this.x, this.y, this.bred, this.dyb);
     }
     this.move = function () {
-        this.x = mouseX;
-        this.y = mouseY;
+
+        this.x = mouseX - (this.bred/2);
+        this.y = mouseY - (this.dyb/2);
     }
-
-
-    this.grebet = function (xa, ya, ra) {
-        if ((ya < this.y + 25 && ya > this.y - 25) && xa > this.x + ra && xa < this.x + this.bred - ra) {
-            return true;
-        } else {
-            return false;
-        }
+ /// FIX HIT FUCKERI BOIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIii
+    this.collude = function(){
+    appelsin.appelsinx();
+    appelsin.appelsiny();
+    if(appelsin.appelsinx() > this.x - (this.bred/2) && appelsin.appelsinx() < this.x + (this.bred/2) && appelsin.appelsiny() > this.y - (this.dyb/2) && appelsin.appelsiny() > this.y + (this.dyb/2))
+     return true;
     }
 
 }

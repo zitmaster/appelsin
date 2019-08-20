@@ -9,9 +9,7 @@ var y = 550;
 var rad = 20;
 var xspeed = 4;
 var yspeed = -10;
-var newspeed;
-var grav = 0.1;
-var col = [200, 100, 0];
+
 
 // Turbanen
 var turban;
@@ -27,96 +25,52 @@ var apppelsinerSomIkkeErGrebet = 0;
  */
 function setup() {
     createCanvas(750, 600);
-    newspeed = yspeed;
-    x = rad;
+ 
     turban = new Kurv(670, 100, 70, 80, 30);
-    appelsin = new Appelsin(x, y, rad, rad);
-    appelsin = new Appelsin(x, y, rad * 2, rad * 2);
+    appelsin = new Appelsin();
 }
 
 function draw() {
     background(0);
-    //appelsin.appelsinMove();
-    checkScore();
     move();
     display();
     turban.move();
-    //appelsin.shootNewApp();
-    // checkAppelsinerSomIkkeErGrebet();
+    collude();
+    fill(255);
+    text("Score: " + this.score, width - 80, 30);
+}
+
+function collude(){
+turban.collude();
+
+if(turban.collude()){
+    score = score + 1;
+}
+
 }
 
 function display() {
     fill(255);
-    text("Score: " + score, width - 80, 30);
-    text("Miss:   " + apppelsinerSomIkkeErGrebet, width - 80, 50);
-
     //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
-    if (tid = 0) {
+    if (tid > 0) {
         tid -= 1;
     }
     if (tid < 100) {
-        fill(this.col);
-        ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
-        //appelsin.tegn();
         appelsin.tegn();
     }
-
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
-
 }
 
 
-function checkScore() {
-    // Her checkes om turbanen har fanget appelsinen. Hvis ja, skydes en ny appelsin afsted
-    if (yspeed > 0) {
-        if (turban.grebet(x, y, rad)) {
-            score += 1;
-            shootNew();
-        }
-    }
 
-}
-
-function move() {
+function move(){
     if (tid <= 0) {
-        x += xspeed;
-        y += yspeed;
-        yspeed += grav;
-    }
-    if (x > width || y > height) {
-        apppelsinerSomIkkeErGrebet += 1;
-        shootNew();
-    }
+     appelsin.move();
+     }
 }
 
-//function checkAppelsinerSomIkkeErGrebet(){
 
-//function checkApppelsinerSomIkkeErGrebet(){
-//  if (x > width || y > height) {
-//    apppelsinerSomIkkeErGrebet += 1;
-//      shootNew();
-//}
-//}
-
-function shootNew() {
-    //Her skal vi sørge for at en ny appelsin skydes afsted 
-    x = rad;
-    y = 550;
-    yspeed = newspeed;
-
-    xspeed = 2 * Math.random(4, 8);
-    xspeed = 1 * Math.random() + 5;
-
-    tid = (int)(Math.random() * 400);
-    //console.log(yspeed);
-    //console.log(tid);
-
-}
-
-function keyPressed() {
-    turban.move(key);
-}
 
 
 
