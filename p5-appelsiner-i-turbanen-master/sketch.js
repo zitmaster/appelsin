@@ -16,11 +16,16 @@ var appelsin;
 var tid = 150;
 var score = 0;
 
+var header;
+
+var button;
+var dead = false;
+
 /* 
  * 
  */
 function setup() {
-    createElement("h1", "Flying Balls");
+    header = createElement("h1", "Flying Balls");
     createCanvas(750, 600);
  
     turban = new Kurv(670, 100, 70, 80, 30);
@@ -36,6 +41,12 @@ function draw() {
     collude();
     fill(255);
     text("Score: " + score, width - 80, 30);
+
+    if(dead){
+        document.getElementById("status").innerHTML = "du er død";
+        button = createButton("reset");
+        button.mouseIsPressed("restart");
+    }
 }
 
 
@@ -69,6 +80,12 @@ function move(){
      appelsin.move();
      }
 }
+
+
+function restart(){
+
+}
+
 
 
 
