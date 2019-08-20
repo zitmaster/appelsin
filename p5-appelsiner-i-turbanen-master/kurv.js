@@ -28,6 +28,6 @@ function Kurv(x, y, bredde, dybde, speed) {
         appelsin.appelsiny();
         if (appelsin.appelsinx() > this.x && appelsin.appelsinx() < this.x + this.bred && appelsin.appelsiny() > this.y && appelsin.appelsiny() < this.y + 10 && appelsin.appelsinyspeed() >= 0)
             return true;
-    }
+            }
 
-}
+            }

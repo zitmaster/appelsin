@@ -8,14 +8,14 @@ function Appelsin() {
     this.newspeed;
     this.grav = 0.1;
     this.col = [200, 100, 0];
-    
+
 
     this.newspeed = this.yspeed;
     this.x = this.rad;
 
     this.tegn = function () {
 
-        
+
         fill(this.col);
         ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
 
@@ -27,7 +27,7 @@ function Appelsin() {
         this.yspeed += this.grav;
         if (this.x > width || this.y > height) {
             this.newshoot();
-            liv -=1;
+            liv -= 1;
         }
     }
 
