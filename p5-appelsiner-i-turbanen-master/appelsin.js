@@ -14,40 +14,40 @@ function Appelsin() {
     this.x = this.rad;
 
     this.tegn = function () {
-        
+
         text("Liv: " + this.apppelsinerSomIkkeErGrebet, width - 80, 50);
         fill(this.col);
         ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
 
     }
-    
-    this.move = function(){
+
+    this.move = function () {
         this.x += this.xspeed;
         this.y += this.yspeed;
         this.yspeed += this.grav;
-        if (this.x > width || this.y > height){
-        this.newshoot();
-        this.apppelsinerSomIkkeErGrebet -= 1;
+        if (this.x > width || this.y > height) {
+            this.newshoot();
+            this.apppelsinerSomIkkeErGrebet -= 1;
         }
     }
 
-    this.appelsinx = function(){
+    this.appelsinx = function () {
         return this.x;
     }
 
-    this.appelsiny = function(){
+    this.appelsiny = function () {
         return this.y;
     }
 
-    this.appelsinyspeed = function(){
+    this.appelsinyspeed = function () {
         return this.yspeed;
     }
 
-    this.newshoot = function (){
+    this.newshoot = function () {
         this.x = this.rad;
-        this.y = random(400,550);
+        this.y = random(400, 550);
         this.yspeed = this.newspeed;
-        this.xspeed =   random(1.5,5);
+        this.xspeed = random(1.5, 5);
     }
 
 }
