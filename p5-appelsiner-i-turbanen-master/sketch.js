@@ -3,22 +3,14 @@ Først laver vi et nogle variable til at lave en appelsin
  - en kugle som vi vil skyde afsted og fange i en turban
 */
 
-// Appelsinen
-var x = 0;
-var y = 550;
-var rad = 20;
-var xspeed = 4;
-var yspeed = -10;
 
-
-// Turbanen
+// Turbanen og appelsinen
 var turban;
 var appelsin;
 
 // Øvrige
 var tid = 150;
 var score = 0;
-var apppelsinerSomIkkeErGrebet = 0;
 
 /* 
  * 
@@ -45,7 +37,6 @@ turban.collude();
 
 if(turban.collude()){
     score = score + 1;
-    appelsin.newshoot;
 }
 
 }
