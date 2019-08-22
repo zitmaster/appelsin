@@ -74,7 +74,9 @@ function draw() {
 
     //Hvis du har 0 liv så taber du
 
-    if (liv <= 0) {
+
+    if(liv <= 0){
+
         dead = true;
         noLoop();
     }
@@ -84,7 +86,7 @@ function draw() {
 
     if (dead) {
 
-        document.getElementById("status").innerHTML = "du er død";
+        document.getElementById("status").innerHTML = "JESUS HAS BEEN CRUSIFIED!";
         dead = false;
         button.show();
         appelsiner = [];
@@ -127,6 +129,7 @@ function restart() {
     dead = false;
     loop();
     button.hide();
+    document.getElementById("status").innerHTML = "JESUS IS ALIVE!!!!!";
 }
 
 
