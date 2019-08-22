@@ -46,15 +46,15 @@ function setup() {
 
     //restart funktionen kaldes
     restart();
-
-
+    
+    knap = createButton("Spawn");
+    knap.mouseClicked(smidBold);
 }
 
 function draw() {
     background(0);
 
     flertaligeappelsiner();
-
 
     // appelsinen blvier vist
     display();
@@ -110,12 +110,10 @@ function display() {
 
 
 // her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
-
-
-function flertaligeappelsiner() {
+function flertaligeappelsiner(){
     for (let i = 0; i < appelsiner.length; i++) {
         appelsiner[i].tegn();
-        if (appelsiner[i].move()) {
+        if(appelsiner[i].move()){
             score += 1;
         }
     }
@@ -134,12 +132,9 @@ function restart() {
 
 
 
-function keyPressed() {
-    appelsiner.push(new Appelsin());
-
-
-}
-
+function smidBold() {
+        appelsiner.push(new Appelsin());
+    }
 
 
 
