@@ -83,7 +83,7 @@ function draw() {
     //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
     if(dead){
 
-        document.getElementById("status").innerHTML = "du er død";
+        document.getElementById("status").innerHTML = "JESUS HAS BEEN CRUSIFIED!";
         dead = false;
         button.show();
         liv +=2;
@@ -135,6 +135,7 @@ function restart(){
     dead = false;
     loop();
     button.hide();
+    document.getElementById("status").innerHTML = "JESUS IS ALIVE!!!!!";
 }
 
 
