@@ -42,11 +42,11 @@ function setup() {
 
     // her definerers der at ved tryk på knappen skal den køre funktionen "restart"
     button.mouseClicked(restart);
-    
+
 
     //restart funktionen kaldes
     restart();
-    
+
 
 }
 
@@ -65,7 +65,7 @@ function draw() {
     //kollision med appelsin = point, miss = mistet liv
 
     fill(255);
-    
+
     //viser antallet af grebne appelsiner
     text("Score: " + score, width - 80, 30);
 
@@ -74,7 +74,7 @@ function draw() {
 
     //Hvis du har 0 liv så taber du
 
-    if(liv <= 0){
+    if (liv <= 0) {
         dead = true;
         noLoop();
     }
@@ -82,7 +82,7 @@ function draw() {
 
     //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
 
-    if(dead){
+    if (dead) {
 
         document.getElementById("status").innerHTML = "du er død";
         dead = false;
@@ -97,11 +97,11 @@ function draw() {
 
 function display() {
     fill(255);
-    
+
     //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
 
 
-    
+
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
 }
@@ -110,19 +110,19 @@ function display() {
 // her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
 
 
-function flertaligeappelsiner(){
-for (let i = 0; i < appelsiner.length; i++) {
-    appelsiner[i].tegn();
-    if(appelsiner[i].move()){
-        score += 1;
+function flertaligeappelsiner() {
+    for (let i = 0; i < appelsiner.length; i++) {
+        appelsiner[i].tegn();
+        if (appelsiner[i].move()) {
+            score += 1;
+        }
     }
-}
 
 }
 
 
 // her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
-function restart(){
+function restart() {
     turban = new Kurv(670, 100, 70, 80, 30);
     dead = false;
     loop();
@@ -132,12 +132,12 @@ function restart(){
 
 
 function keyPressed() {
-        appelsiner.push(new Appelsin());
-        
-    
-    }
+    appelsiner.push(new Appelsin());
 
-  
+
+}
+
+
 
 
 
