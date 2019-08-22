@@ -24,10 +24,17 @@ function Appelsin() {
         this.x += this.xspeed;
         this.y += this.yspeed;
         this.yspeed += this.grav;
+        
+        if(this.y < 0){
+        this.grav = 0.5;
+        }else{
+            this.grav = .1;
+        }
+
 
         if(this.x > mouseX - 40 && this.x < mouseX + 40 && this.y > mouseY -40 && this.y < mouseY - 30 && this.yspeed >= 0 ){
-            score += 1;
             this.newshoot();
+            return true;
         }
 
         if (this.x > width || this.y > height){

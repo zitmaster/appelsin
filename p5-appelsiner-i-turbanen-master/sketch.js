@@ -88,7 +88,7 @@ function draw() {
         dead = false;
         button.show();
         appelsiner = [];
-        liv +=10;
+        liv = 10;
         score = 0;
 
     }
@@ -112,9 +112,10 @@ function display() {
 
 function flertaligeappelsiner(){
 for (let i = 0; i < appelsiner.length; i++) {
-    appelsiner[i].move();
     appelsiner[i].tegn();
-    
+    if(appelsiner[i].move()){
+        score += 1;
+    }
 }
 
 }
@@ -131,10 +132,9 @@ function restart(){
 
 
 function keyPressed() {
-    for (let i = 0; i < 1; i++) {
         appelsiner.push(new Appelsin());
         
-    }
+    
     }
 
   
