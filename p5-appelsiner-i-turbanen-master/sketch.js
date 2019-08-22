@@ -6,8 +6,9 @@ Først laver vi et nogle variable til at lave en appelsin
 
 //document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
+
 function preload() {
-  turbanhoved = loadImage('flyttekasse.png');
+    turbanhoved = loadImage('flyttekasse.png');
 }
 
 // Turbanen og appelsinen
@@ -17,7 +18,7 @@ var appelsin;
 // Øvrige
 var tid = 150;
 var score = 0;
-
+var liv = 2;
 var header;
 
 var button;
@@ -29,10 +30,12 @@ var dead = false;
 function setup() {
     header = createElement("h1", "Flying Balls");
     createCanvas(750, 600);
+
     button = createButton("reset");
     button.mouseClicked(restart);
     restart();
     
+
 }
 
 function draw() {
@@ -43,6 +46,9 @@ function draw() {
     collude();
     fill(255);
     text("Score: " + score, width - 80, 30);
+    //text("Liv: " + liv, width - 80, 50);
+    text("miss: " + liv, width - 100, 50);
+
 
     if(appelsin.apppelsinerSomIkkeErGrebet <= 0){
         dead = true;
@@ -50,6 +56,7 @@ function draw() {
     }
 
     if(dead){
+
         document.getElementById("status").innerHTML = "du er død";
         dead = false;
         button.show();
@@ -57,13 +64,13 @@ function draw() {
 }
 
 
-function collude(){
-turban.collude();
+function collude() {
+    turban.collude();
 
-if(turban.collude()){
-    score = score + 1;
-    appelsin.newshoot();
-}
+    if (turban.collude()) {
+        score = score + 1;
+        appelsin.newshoot();
+    }
 
 }
 
@@ -82,11 +89,14 @@ function display() {
 
 
 
-function move(){
+function move() {
     if (tid <= 0) {
-     appelsin.move();
-     }
+        if(appelsin.move()){
+            liv -= 1
+        }
+    }
 }
+
 
 
 function restart(){
@@ -95,6 +105,7 @@ function restart(){
     dead = false;
     loop();
     button.hide();
+
 }
 
 
