@@ -14,7 +14,6 @@ function Appelsin() {
 
     this.tegn = function () {
 
-        //text("Liv: " + this.apppelsinerSomIkkeErGrebet, width - 80, 50);
         fill(this.col);
         ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
 

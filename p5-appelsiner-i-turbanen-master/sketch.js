@@ -7,6 +7,7 @@ Først laver vi et nogle variable til at lave en appelsin
 //document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
 
+// her loader vi billedet af vores "turban" / kasse
 function preload() {
     turbanhoved = loadImage('flyttekasse.png');
 }
@@ -21,18 +22,30 @@ var score = 0;
 var liv = 2;
 var header;
 
+// variabel til knappen
 var button;
+
+// variabel til "død"
 var dead = false;
 
 /* 
  * 
  */
 function setup() {
+
+    //her laves en overskrift til spillet
     header = createElement("h1", "Flying Balls");
+
     createCanvas(750, 600);
 
-    button = createButton("reset");
+    //her laves der en knap, der er bundet til funktionen restart
+    button = createButton("restart");
+
+    // her definerers der at ved tryk på knappen skal den køre funktionen "restart"
     button.mouseClicked(restart);
+    
+
+    //restart funktionen kaldes
     restart();
     
 
@@ -40,30 +53,45 @@ function setup() {
 
 function draw() {
     background(0);
-    move();
-    display();
-    turban.move();
-    collude();
-    fill(255);
-    text("Score: " + score, width - 80, 30);
-    //text("Liv: " + liv, width - 80, 50);
-    text("miss: " + liv, width - 100, 50);
 
-//Hvis du har 0 liv så taber du
-   /* if(liv <= 0){
+    //move får appelsinen til at bevæge sig
+    move();
+
+    // appelsinen blvier vist
+    display();
+
+    //turbanen får bevægelse her
+    turban.move();
+
+    //kollision med appelsin = point, miss = mistet liv
+    collude();
+
+    fill(255);
+    
+    //viser antallet af grebne appelsiner
+    text("Score: " + score, width - 80, 30);
+
+    //viser antalet af liv du har tilbage
+    text("Liv: " + liv, width - 100, 50);
+
+    //Hvis du har 0 liv så taber du
+    if(liv <= 0){
         dead = true;
         noLoop();
-    }*/
+    }
 
-    /*if(dead){
+    //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
+    if(dead){
 
         document.getElementById("status").innerHTML = "du er død";
         dead = false;
         button.show();
-    }*/
+        liv +=2;
+        score = 0;
+    }
 }
 
-
+// hvis appelsinen kolliderer med turbanen får du 1 point og den skyder en ny
 function collude() {
     turban.collude();
 
@@ -76,6 +104,7 @@ function collude() {
 
 function display() {
     fill(255);
+    
     //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
     if (tid > 0) {
         tid -= 1;
@@ -83,12 +112,13 @@ function display() {
     if (tid < 100) {
         appelsin.tegn();
     }
+    
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
 }
 
 
-
+// her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
 function move() {
     if (tid <= 0) {
         if(appelsin.move()){
@@ -98,14 +128,13 @@ function move() {
 }
 
 
-
+// her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
 function restart(){
     turban = new Kurv(670, 100, 70, 80, 30);
     appelsin = new Appelsin();
     dead = false;
     loop();
     button.hide();
-
 }
 
 
