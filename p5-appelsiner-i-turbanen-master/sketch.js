@@ -75,19 +75,24 @@ function draw() {
     text("Liv: " + liv, width - 100, 50);
 
     //Hvis du har 0 liv så taber du
+
     if(liv <= 0){
         dead = true;
         noLoop();
     }
 
+
     //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
+
     if(dead){
 
         document.getElementById("status").innerHTML = "du er død";
         dead = false;
         button.show();
+
         liv +=2;
         score = 0;
+
     }
 }
 
