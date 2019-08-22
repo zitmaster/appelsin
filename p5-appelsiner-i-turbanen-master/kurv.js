@@ -22,12 +22,6 @@ function Kurv(x, y, bredde, dybde, speed) {
         this.y = mouseY - (this.dyb / 2);
     }
 
-    this.collude = function () {
-        appelsin.appelsinyspeed();
-        appelsin.appelsinx();
-        appelsin.appelsiny();
-        if (appelsin.appelsinx() > this.x && appelsin.appelsinx() < this.x + this.bred && appelsin.appelsiny() > this.y && appelsin.appelsiny() < this.y + 10 && appelsin.appelsinyspeed() >= 0)
-            return true;
-            }
 
-            }
+
+}

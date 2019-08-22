@@ -14,12 +14,11 @@ function preload() {
 
 // Turbanen og appelsinen
 var turban;
-var appelsin;
+var appelsiner = [];
 
 // Øvrige
-var tid = 150;
 var score = 0;
-var liv = 2;
+var liv = 10;
 var header;
 
 // variabel til knappen
@@ -54,8 +53,8 @@ function setup() {
 function draw() {
     background(0);
 
-    //move får appelsinen til at bevæge sig
-    move();
+    flertaligeappelsiner();
+
 
     // appelsinen blvier vist
     display();
@@ -64,7 +63,6 @@ function draw() {
     turban.move();
 
     //kollision med appelsin = point, miss = mistet liv
-    collude();
 
     fill(255);
     
@@ -89,34 +87,20 @@ function draw() {
         document.getElementById("status").innerHTML = "du er død";
         dead = false;
         button.show();
-
-        liv +=2;
+        appelsiner = [];
+        liv +=10;
         score = 0;
 
     }
 }
 
-// hvis appelsinen kolliderer med turbanen får du 1 point og den skyder en ny
-function collude() {
-    turban.collude();
-
-    if (turban.collude()) {
-        score = score + 1;
-        appelsin.newshoot();
-    }
-
-}
 
 function display() {
     fill(255);
     
     //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
-    if (tid > 0) {
-        tid -= 1;
-    }
-    if (tid < 100) {
-        appelsin.tegn();
-    }
+
+
     
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
@@ -124,19 +108,21 @@ function display() {
 
 
 // her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
-function move() {
-    if (tid <= 0) {
-        if(appelsin.move()){
-            liv -= 1
-        }
-    }
+
+
+function flertaligeappelsiner(){
+for (let i = 0; i < appelsiner.length; i++) {
+    appelsiner[i].move();
+    appelsiner[i].tegn();
+    
+}
+
 }
 
 
 // her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
 function restart(){
     turban = new Kurv(670, 100, 70, 80, 30);
-    appelsin = new Appelsin();
     dead = false;
     loop();
     button.hide();
@@ -144,7 +130,14 @@ function restart(){
 
 
 
+function keyPressed() {
+    for (let i = 0; i < 1; i++) {
+        appelsiner.push(new Appelsin());
+        
+    }
+    }
 
+  
 
 
 
