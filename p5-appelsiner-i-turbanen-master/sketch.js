@@ -50,17 +50,17 @@ function draw() {
     text("miss: " + liv, width - 100, 50);
 
 //Hvis du har 0 liv så taber du
-   /* if(liv <= 0){
+    if(liv <= 0){
         dead = true;
         noLoop();
-    }*/
+    }
 
-    /*if(dead){
+    if(dead){
 
         document.getElementById("status").innerHTML = "du er død";
         dead = false;
         button.show();
-    }*/
+    }
 }
 
 
