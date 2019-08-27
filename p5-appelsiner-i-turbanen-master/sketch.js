@@ -3,7 +3,7 @@ Først laver vi et nogle variable til at lave en appelsin
  - en kugle som vi vil skyde afsted og fange i en turban
 */
 
-
+var førstegangsstart = true;
 //document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
 
@@ -22,8 +22,10 @@ var liv = 10;
 var header;
 
 // variabel til knappen
+var knap;
 var button;
-
+var singleplayerknap;
+var multiplayerknap;
 // variabel til "død"
 var dead = false;
 
@@ -36,13 +38,20 @@ function setup() {
     header = createElement("h1", "Flying Balls");
 
     createCanvas(750, 600);
+singleplayerknap = createButton("singeplayer");
+singleplayerknap.position(200 , 200);
+singleplayerknap.mouseClicked(førstegangsstartt);
+
+multiplayerknap = createButton("multiplayer");
+multiplayerknap.position(200 , 400);
 
     //her laves der en knap, der er bundet til funktionen restart
     button = createButton("restart");
+    
 
     // her definerers der at ved tryk på knappen skal den køre funktionen "restart"
     button.mouseClicked(restart);
-
+    
 
     //restart funktionen kaldes
     restart();
@@ -52,6 +61,7 @@ function setup() {
 }
 
 function draw() {
+
     background(0);
 
     flertaligeappelsiner();
@@ -65,7 +75,7 @@ function draw() {
     //kollision med appelsin = point, miss = mistet liv
 
     fill(255);
-
+    
     //viser antallet af grebne appelsiner
     text("Score: " + score, width - 80, 30);
 
@@ -73,10 +83,7 @@ function draw() {
     text("Liv: " + liv, width - 100, 50);
 
     //Hvis du har 0 liv så taber du
-
-
     if(liv <= 0){
-
         dead = true;
         noLoop();
     }
@@ -84,7 +91,7 @@ function draw() {
 
     //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
 
-    if (dead) {
+    if(dead){
 
         document.getElementById("status").innerHTML = "JESUS HAS BEEN CRUSIFIED!";
         dead = false;
@@ -94,16 +101,27 @@ function draw() {
         score = 0;
 
     }
+ 
+    if(førstegangsstart == true){
+        background(255);
+        button.hide();
+        
+    }
+
 }
 
+function førstegangsstartt(){førstegangsstart = false;
+singleplayerknap.hide();
+multiplayerknap.hide();
+}
 
 function display() {
     fill(255);
-
+    
     //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
 
 
-
+    
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
 }
@@ -122,7 +140,7 @@ function flertaligeappelsiner(){
 
 
 // her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
-function restart() {
+function restart(){
     turban = new Kurv(670, 100, 70, 80, 30);
     dead = false;
     loop();
@@ -136,6 +154,7 @@ function smidBold() {
         appelsiner.push(new Appelsin());
     }
 
+  
 
 
 
