@@ -171,10 +171,8 @@ function deltag(){
 
 function sendbold(){
     
-    if(sendbolddelay == 1){
-        socket.sendMessage("Suckass");
-    sendbolddelay = 0;
-    }  
+        socket.sendMessage(sendbolddelay);
+  
 }
 
 function display() {
@@ -182,11 +180,13 @@ function display() {
     
     //viser multiplayertingende
 if(multiplayer == true){
-    text("pin: "+socket.id,20,40);
+    text("pin: "+socket.id,20,40); 
     socket.onMessage(smidBold);
+
 }
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
+    sendbolddelay = 1;
 }
 
 
@@ -213,7 +213,8 @@ function restart(){
 
 
 
-function smidBold() {
+function smidBold(msg) {
+    console.log(msg);
         appelsiner.push(new Appelsin());
     
     }
