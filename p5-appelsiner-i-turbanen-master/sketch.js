@@ -29,6 +29,15 @@ var multiplayerknap;
 // variabel til "død"
 var dead = false;
 
+//multiplayer vaiablerne
+var socket
+var multiplayer;
+var pin;
+var joinedpin;
+var sendboldeknap;
+var hostknap;
+var joinknap;
+var sendbolddelay = 1;
 /* 
  * 
  */
@@ -40,10 +49,27 @@ function setup() {
     createCanvas(750, 600);
 singleplayerknap = createButton("singeplayer");
 singleplayerknap.position(200 , 200);
-singleplayerknap.mouseClicked(førstegangsstartt);
+singleplayerknap.mouseClicked(førstegangsstarttsingelplayer);
 
 multiplayerknap = createButton("multiplayer");
 multiplayerknap.position(200 , 400);
+multiplayerknap.mouseClicked(førstegangsstartmultiplayer);
+
+hostknap = createButton("Host?");
+hostknap.position(170,300);
+hostknap.hide();
+hostknap.mouseClicked(host);
+
+joinknap = createButton("join?");
+joinknap.position(230,300);
+joinknap.hide();
+joinknap.mouseClicked(deltag);
+
+sendboldeknap = createButton("sendbolde!");
+sendboldeknap.position(200,350);
+sendboldeknap.hide();
+sendboldeknap.mouseClicked(sendbold);
+
 
     //her laves der en knap, der er bundet til funktionen restart
     button = createButton("restart");
@@ -58,6 +84,7 @@ multiplayerknap.position(200 , 400);
     
     knap = createButton("Spawn");
     knap.mouseClicked(smidBold);
+    
 }
 
 function draw() {
@@ -110,18 +137,54 @@ function draw() {
 
 }
 
-function førstegangsstartt(){førstegangsstart = false;
+function førstegangsstarttsingelplayer(){førstegangsstart = false;
 singleplayerknap.hide();
 multiplayerknap.hide();
+}
+
+function førstegangsstartmultiplayer(){
+    singleplayerknap.hide();
+    multiplayerknap.hide();
+    knap.hide();
+    hostknap.show();
+    joinknap.show();
+    
+}
+
+function host(){
+   socket = ElineSocket.create();
+   hostknap.hide();
+   joinknap.hide();
+   multiplayer = true;
+   førstegangsstart = false;
+}
+
+function deltag(){
+    pin = prompt("pin");
+    socket = ElineSocket.connect(pin);
+    hostknap.hide();
+    joinknap.hide();
+    sendboldeknap.show();
+    
+    
+}
+
+function sendbold(){
+    
+    if(sendbolddelay == 1){
+        socket.sendMessage("Suckass");
+    sendbolddelay = 0;
+    }  
 }
 
 function display() {
     fill(255);
     
-    //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
-
-
-    
+    //viser multiplayertingende
+if(multiplayer == true){
+    text("pin: "+socket.id,20,40);
+    socket.onMessage(smidBold);
+}
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
 }
@@ -152,6 +215,7 @@ function restart(){
 
 function smidBold() {
         appelsiner.push(new Appelsin());
+    
     }
 
   
