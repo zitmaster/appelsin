@@ -7,7 +7,7 @@ var førstegangsstart = true;
 //document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
 
-// her loader vi billedet af vores "turban" / kasse
+// Her loader vi billedet af vores "turban" / kasse
 function preload() {
     turbanhoved = loadImage('flyttekasse.png');
 }
@@ -21,15 +21,15 @@ var score = 0;
 var liv = 10;
 var header;
 
-// variabel til knappen
+// Variabel til knappen
 var knap;
 var button;
 var singleplayerknap;
 var multiplayerknap;
-// variabel til "død"
+// Variabel til "død"
 var dead = false;
 
-//multiplayer vaiablerne
+// Multiplayer vaiablerne
 var socket
 var multiplayer;
 var pin;
@@ -43,7 +43,7 @@ var sendbolddelay = 1;
  */
 function setup() {
 
-    //her laves en overskrift til spillet
+// Her laves en overskrift til spillet
     header = createElement("h1", "Flying Balls");
 
     createCanvas(750, 600);
@@ -71,15 +71,15 @@ sendboldeknap.hide();
 sendboldeknap.mouseClicked(sendbold);
 
 
-    //her laves der en knap, der er bundet til funktionen restart
+    // Her laves der en knap, der er bundet til funktionen restart
     button = createButton("restart");
     
 
-    // her definerers der at ved tryk på knappen skal den køre funktionen "restart"
+    // Her definerers der at ved tryk på knappen skal den køre funktionen "restart"
     button.mouseClicked(restart);
     
 
-    //restart funktionen kaldes
+    // Restart funktionen kaldes
     restart();
     
     knap = createButton("Spawn");
@@ -93,20 +93,20 @@ function draw() {
 
     flertaligeappelsiner();
 
-    // appelsinen blvier vist
+    // Appelsinen blvier vist
     display();
 
-    //turbanen får bevægelse her
+    // Turbanen får bevægelse her
     turban.move();
 
-    //kollision med appelsin = point, miss = mistet liv
+    // Kollision med appelsin = point, miss = mistet liv
 
     fill(255);
     
-    //viser antallet af grebne appelsiner
+    // Viser antallet af grebne appelsiner
     text("Score: " + score, width - 80, 30);
 
-    //viser antalet af liv du har tilbage
+    // Viser antalet af liv du har tilbage
     text("Liv: " + liv, width - 100, 50);
 
     //Hvis du har 0 liv så taber du
@@ -116,7 +116,7 @@ function draw() {
     }
 
 
-    //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
+    // Hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
 
     if(dead){
 
@@ -178,19 +178,19 @@ function sendbold(){
 function display() {
     fill(255);
     
-    //viser multiplayertingende
+// Viser multiplayertingende
 if(multiplayer == true){
     text("pin: "+socket.id,20,40); 
     socket.onMessage(smidBold);
 
 }
-    // Her vises turbanen - foreløbig blot en firkant
+// Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
     sendbolddelay = 1;
 }
 
 
-// her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
+// Her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
 function flertaligeappelsiner(){
     for (let i = 0; i < appelsiner.length; i++) {
         appelsiner[i].tegn();
@@ -202,7 +202,7 @@ function flertaligeappelsiner(){
 }
 
 
-// her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
+// Her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
 function restart(){
     turban = new Kurv(670, 100, 70, 80, 30);
     dead = false;
