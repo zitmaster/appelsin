@@ -1,3 +1,57 @@
-#status{
-    
+#titel{
+    width: 15%;
+    text-align: center;
+    margin: auto;
+    animation-name: titelAnimation;
+    animation-duration: 2s;
 }
+
+@keyframes titelAnimation{
+    0%  {color: #ffffff;}
+    10% {color: #dddddd;}
+    20% {color: #bbbbbb;}
+    30% {color: #888888;}
+    40% {color: #777777;}
+    50% {color: #555555;}
+    60% {color: #444444;}
+    70% {color: #333333;}
+    80% {color: #222222;}
+    90% {color: #111111;}
+    100%{color: #000000;}
+    0%  {background-color: #000000;}
+    10% {background-color: #111111;}
+    20% {background-color: #222222;}
+    30% {background-color: #333333;}
+    40% {background-color: #444444;}
+    50% {background-color: #555555;}
+    60% {background-color: #777777;}
+    70% {background-color: #888888;}
+    80% {background-color: #bbbbbb;}
+    90% {background-color: #dddddd;}
+    100%{background-color: #ffffff;}
+}
+
+#playingField{
+    float:left;
+}
+
+#status{
+    position: relative;
+}
+
+#buttonBox{
+    position: relative;
+    float: right;
+    width: 50px;
+    height: 100px;
+    margin-right: 35%;
+}
+
+#restartButton{
+    position:relative;
+}
+
+#spawnButton{
+    position: relative;
+}
+

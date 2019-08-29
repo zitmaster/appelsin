@@ -43,36 +43,37 @@ var sendbolddelay = 1;
  */
 function setup() {
 
-    //her laves en overskrift til spillet
-    header = createElement("h1", "Flying Balls");
+    let myCanvas = createCanvas(windowWidth * 0.6, windowHeight);
+    myCanvas.parent("playingField");
 
-    createCanvas(750, 600);
-singleplayerknap = createButton("singeplayer");
-singleplayerknap.position(200 , 200);
-singleplayerknap.mouseClicked(førstegangsstarttsingelplayer);
+    singleplayerknap = createButton("singeplayer");
+    singleplayerknap.position(200 , 200);
+    singleplayerknap.mouseClicked(førstegangsstarttsingelplayer);
 
-multiplayerknap = createButton("multiplayer");
-multiplayerknap.position(200 , 400);
-multiplayerknap.mouseClicked(førstegangsstartmultiplayer);
+    multiplayerknap = createButton("multiplayer");
+    multiplayerknap.position(200 , 400);
+    multiplayerknap.mouseClicked(førstegangsstartmultiplayer);
 
-hostknap = createButton("Host?");
-hostknap.position(170,300);
-hostknap.hide();
-hostknap.mouseClicked(host);
+    hostknap = createButton("Host?");
+    hostknap.position(170,300);
+    hostknap.hide();
+    hostknap.mouseClicked(host);
 
-joinknap = createButton("join?");
-joinknap.position(230,300);
-joinknap.hide();
-joinknap.mouseClicked(deltag);
+    joinknap = createButton("join?");
+    joinknap.position(230,300);
+    joinknap.hide();
+    joinknap.mouseClicked(deltag);
 
-sendboldeknap = createButton("sendbolde!");
-sendboldeknap.position(200,350);
-sendboldeknap.hide();
-sendboldeknap.mouseClicked(sendbold);
+    sendboldeknap = createButton("sendbolde!");
+    sendboldeknap.position(200,350);
+    sendboldeknap.hide();
+    sendboldeknap.mouseClicked(sendbold);
 
 
     //her laves der en knap, der er bundet til funktionen restart
     button = createButton("restart");
+
+    button.parent("restartButton");
     
 
     // her definerers der at ved tryk på knappen skal den køre funktionen "restart"
@@ -82,9 +83,14 @@ sendboldeknap.mouseClicked(sendbold);
     //restart funktionen kaldes
     restart();
     
-    knap = createButton("Spawn");
-    knap.mouseClicked(smidBold);
-    
+    kastBold = createButton("Spawn");
+    kastBold.mouseClicked(smidBold);
+    //kastBold.hide();
+    kastBold.parent("spawnButton");
+
+}
+function windowResized() {
+    resizeCanvas(windowWidth*0.6, windowHeight);
 }
 
 function draw() {
@@ -102,18 +108,15 @@ function draw() {
     //kollision med appelsin = point, miss = mistet liv
 
     fill(255);
-    
-    //viser antallet af grebne appelsiner
-    text("Score: " + score, width - 80, 30);
-
-    //viser antalet af liv du har tilbage
-    text("Liv: " + liv, width - 100, 50);
 
     //Hvis du har 0 liv så taber du
     if(liv <= 0){
         dead = true;
         noLoop();
     }
+
+    text("score: " + score, width - 80, 30);
+    text("liv: " + liv, width - 80, 50)
 
 
     //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
@@ -124,14 +127,15 @@ function draw() {
         dead = false;
         button.show();
         appelsiner = [];
-        liv = 10;
-        score = 0;
 
+        liv = 10;
+        
+        score = 0;
     }
  
     if(førstegangsstart == true){
-        background(255);
-        button.hide();
+        background(150);
+        //button.hide();
         
     }
 
@@ -140,12 +144,13 @@ function draw() {
 function førstegangsstarttsingelplayer(){førstegangsstart = false;
 singleplayerknap.hide();
 multiplayerknap.hide();
+kastBold.show();
 }
 
 function førstegangsstartmultiplayer(){
     singleplayerknap.hide();
     multiplayerknap.hide();
-    knap.hide();
+    kastBold.hide();
     hostknap.show();
     joinknap.show();
     
@@ -196,6 +201,7 @@ function flertaligeappelsiner(){
         appelsiner[i].tegn();
         if(appelsiner[i].move()){
             score += 1;
+            document.getElementById("score").innerHTML = "score: " + score;
         }
     }
 
