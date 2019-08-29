@@ -47,7 +47,7 @@ function setup() {
     myCanvas.parent("playingField");
 
 //Knappen til "singleplayer" funktionen
-    singleplayerknap = createButton("singeplayer");
+    singleplayerknap = createButton("singleplayer");
     singleplayerknap.position(200 , 200);
     singleplayerknap.mouseClicked(førstegangsstarttsingelplayer);
 
