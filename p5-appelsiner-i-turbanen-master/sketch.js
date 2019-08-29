@@ -7,7 +7,7 @@ var førstegangsstart = true;
 //document.getElementById("status").innerHTML = "I GANG";
 var turbanhoved;
 
-// Her loader vi billedet af vores "turban" / kasse
+// her loader vi billedet af vores "turban" / kasse
 function preload() {
     turbanhoved = loadImage('flyttekasse.png');
 }
@@ -21,15 +21,15 @@ var score = 0;
 var liv = 10;
 var header;
 
-// Variabel til knappen
+// variabel til knappen
 var knap;
 var button;
 var singleplayerknap;
 var multiplayerknap;
-// Variabel til "død"
+// variabel til "død"
 var dead = false;
 
-// Multiplayer vaiablerne
+//multiplayer vaiablerne
 var socket
 var multiplayer;
 var pin;
@@ -38,53 +38,59 @@ var sendboldeknap;
 var hostknap;
 var joinknap;
 var sendbolddelay = 1;
+var reloadknap;
+var ammo = 1;
 /* 
  * 
  */
 function setup() {
 
-    // Her laves en overskrift til spillet
+    //her laves en overskrift til spillet
     header = createElement("h1", "Flying Balls");
 
     createCanvas(750, 600);
-    singleplayerknap = createButton("singeplayer");
-    singleplayerknap.position(200, 200);
-    singleplayerknap.mouseClicked(førstegangsstarttsingelplayer);
+singleplayerknap = createButton("singeplayer");
+singleplayerknap.position(200 , 200);
+singleplayerknap.mouseClicked(førstegangsstarttsingelplayer);
 
-    multiplayerknap = createButton("multiplayer");
-    multiplayerknap.position(200, 400);
-    multiplayerknap.mouseClicked(førstegangsstartmultiplayer);
+multiplayerknap = createButton("multiplayer");
+multiplayerknap.position(200 , 400);
+multiplayerknap.mouseClicked(førstegangsstartmultiplayer);
 
-    hostknap = createButton("Host?");
-    hostknap.position(170, 300);
-    hostknap.hide();
-    hostknap.mouseClicked(host);
+hostknap = createButton("Host?");
+hostknap.position(170,300);
+hostknap.hide();
+hostknap.mouseClicked(host);
 
-    joinknap = createButton("join?");
-    joinknap.position(230, 300);
-    joinknap.hide();
-    joinknap.mouseClicked(deltag);
+joinknap = createButton("join?");
+joinknap.position(230,300);
+joinknap.hide();
+joinknap.mouseClicked(deltag);
 
-    sendboldeknap = createButton("sendbolde!");
-    sendboldeknap.position(200, 350);
-    sendboldeknap.hide();
-    sendboldeknap.mouseClicked(sendbold);
+sendboldeknap = createButton("sendbolde!");
+sendboldeknap.position(200,350);
+sendboldeknap.hide();
+sendboldeknap.mouseClicked(sendbold);
 
+reloadknap = createButton("lad Pistolen");
+reloadknap.position(200,400);
+reloadknap.hide();
+reloadknap.mouseClicked(reload);
 
-    // Her laves der en knap, der er bundet til funktionen restart
+    //her laves der en knap, der er bundet til funktionen restart
     button = createButton("restart");
+    
 
-
-    // Her definerers der at ved tryk på knappen skal den køre funktionen "restart"
+    // her definerers der at ved tryk på knappen skal den køre funktionen "restart"
     button.mouseClicked(restart);
+    
 
-
-    // Restart funktionen kaldes
+    //restart funktionen kaldes
     restart();
-
+    
     knap = createButton("Spawn");
     knap.mouseClicked(smidBold);
-
+    
 }
 
 function draw() {
@@ -93,32 +99,32 @@ function draw() {
 
     flertaligeappelsiner();
 
-    // Appelsinen blvier vist
+    // appelsinen blvier vist
     display();
 
-    // Turbanen får bevægelse her
+    //turbanen får bevægelse her
     turban.move();
 
-    // Kollision med appelsin = point, miss = mistet liv
+    //kollision med appelsin = point, miss = mistet liv
 
     fill(255);
-
-    // Viser antallet af grebne appelsiner
+    
+    //viser antallet af grebne appelsiner
     text("Score: " + score, width - 80, 30);
 
-    // Viser antalet af liv du har tilbage
+    //viser antalet af liv du har tilbage
     text("Liv: " + liv, width - 100, 50);
 
     //Hvis du har 0 liv så taber du
-    if (liv <= 0) {
+    if(liv <= 0){
         dead = true;
         noLoop();
     }
 
 
-    // Hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
+    //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
 
-    if (dead) {
+    if(dead){
 
         document.getElementById("status").innerHTML = "JESUS HAS BEEN CRUSIFIED!";
         dead = false;
@@ -128,83 +134,91 @@ function draw() {
         score = 0;
 
     }
-
-    if (førstegangsstart == true) {
+ 
+    if(førstegangsstart == true){
         background(255);
         button.hide();
-
+        
     }
 
 }
 
-function førstegangsstarttsingelplayer() {
-    førstegangsstart = false;
-    singleplayerknap.hide();
-    multiplayerknap.hide();
+function førstegangsstarttsingelplayer(){førstegangsstart = false;
+singleplayerknap.hide();
+multiplayerknap.hide();
 }
 
-function førstegangsstartmultiplayer() {
+function førstegangsstartmultiplayer(){
     singleplayerknap.hide();
     multiplayerknap.hide();
     knap.hide();
     hostknap.show();
     joinknap.show();
-
+    
 }
 
-function host() {
-    socket = ElineSocket.create();
-    hostknap.hide();
-    joinknap.hide();
-    multiplayer = true;
-    førstegangsstart = false;
+function host(){
+   socket = ElineSocket.create();
+   hostknap.hide();
+   joinknap.hide();
+   multiplayer = true;
+   førstegangsstart = false;
 }
 
-function deltag() {
+function deltag(){
     pin = prompt("pin");
     socket = ElineSocket.connect(pin);
     hostknap.hide();
     joinknap.hide();
     sendboldeknap.show();
-
-
+    reloadknap.show();
+    
+    
 }
 
-function sendbold() {
-
-    socket.sendMessage(sendbolddelay);
-
+function sendbold(){
+    
+        socket.sendMessage(sendbolddelay);
+  
 }
 
 function display() {
     fill(255);
-
-    // Viser multiplayertingende
-    if (multiplayer == true) {
-        text("pin: " + socket.id, 20, 40);
-        socket.onMessage(smidBold);
-
-    }
+    
+    //viser multiplayertingende
+if(multiplayer == true){
+    text("pin: "+socket.id,20,40);
+ if(ammo == 1){    
+    socket.onMessage(smidBold);
+    ammo = 0;
+}
+}
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
     sendbolddelay = 1;
 }
 
 
-// Her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
-function flertaligeappelsiner() {
+// her defineres det at hvis appelsinen rammer højre kant eller bunden af canvaset så mister du 1 liv
+function flertaligeappelsiner(){
     for (let i = 0; i < appelsiner.length; i++) {
         appelsiner[i].tegn();
-        if (appelsiner[i].move()) {
+        if(appelsiner[i].move()){
             score += 1;
         }
+        if(appelsiner[i].delete()){
+            appelsiner.splice(i, 1);
+            i--;
+           
+        }
+        
     }
 
 }
 
 
-// Her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
-function restart() {
+// her er funktionen restart der kalder turbanen, appelsinen, et loop og sætter dead til false.
+function restart(){
     turban = new Kurv(670, 100, 70, 80, 30);
     dead = false;
     loop();
@@ -216,11 +230,15 @@ function restart() {
 
 function smidBold(msg) {
     console.log(msg);
-    appelsiner.push(new Appelsin());
+        appelsiner.push(new Appelsin());
 
-}
+    }
 
-
+  function reload(){
+ if(ammo == 0){
+     ammo = 1;
+ }
+  }
 
 
 
