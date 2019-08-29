@@ -17,7 +17,6 @@ function Appelsin() {
 
         fill(this.col);
         ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
-
     }
 
     this.move = function () {
@@ -31,16 +30,13 @@ function Appelsin() {
             this.grav = .1;
         }
 
-
-
-
     }
     this.delete = function () {
 
         if (this.x > width || this.y > height) {
             liv -= 1;
             if (multiplayer == false) {
-                this.newshoot(); //this creates an object which will penetrate the skull of a filthy tranny nigger thus terminating its presence in our realm
+                this.newshoot();
             } else {
                 return true;
             }

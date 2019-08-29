@@ -33,11 +33,9 @@ var dead = false;
 var socket
 var multiplayer;
 var pin;
-var joinedpin;
 var sendboldeknap;
 var hostknap;
 var joinknap;
-var sendbolddelay = 1;
 var reloadknap;
 var ammo = 1;
 /* 
@@ -82,7 +80,7 @@ function setup() {
     reloadknap = createButton("lad Pistolen");
     reloadknap.position(200, 400);
     reloadknap.hide();
-    reloadknap.mouseClicked(reload);
+    
 
     //her laves der en knap, der er bundet til funktionen restart
     button = createButton("restart");
@@ -162,15 +160,14 @@ function draw() {
     }
 
 }
-
-
+// det der sker når man klikker på singeplayer knappen
 function førstegangsstarttsingelplayer(){førstegangsstart = false;
 singleplayerknap.hide();
 multiplayerknap.hide();
 kastBold.show();
 
 }
-
+// det der sker når man klikker på multiplayer knappen
 function førstegangsstartmultiplayer() {
     singleplayerknap.hide();
     multiplayerknap.hide();
@@ -179,15 +176,16 @@ function førstegangsstartmultiplayer() {
     joinknap.show();
 
 }
-
+// det der sker når man klikker på host knappen
 function host() {
     socket = ElineSocket.create();
     hostknap.hide();
     joinknap.hide();
     multiplayer = true;
     førstegangsstart = false;
-}
 
+}
+// det der sker når man klikker på join knappen
 function deltag() {
     pin = prompt("pin");
     socket = ElineSocket.connect(pin);
@@ -198,13 +196,13 @@ function deltag() {
 
 
 }
-
+// det der sker når personen der har joined klikker på sendbolde!
 function sendbold() {
 
-    socket.sendMessage(sendbolddelay);
+    socket.sendMessage("SKYD!");
 
 }
-
+// function der viser id hos hosten samt kassen/turbanen
 function display() {
     fill(255);
 
@@ -218,7 +216,6 @@ function display() {
     }
     // Her vises turbanen - foreløbig blot en firkant
     turban.tegn();
-    sendbolddelay = 1;
 }
 
 
@@ -258,11 +255,6 @@ function smidBold(msg) {
 
 }
 
-function reload() {
-    if (ammo == 0) {
-        ammo = 1;
-    }
-}
 
 
 
