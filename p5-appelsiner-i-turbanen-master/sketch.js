@@ -131,17 +131,14 @@ function draw() {
     text("Score: " + score, width - 80, 30);
 
     //viser antalet af liv du har tilbage
-    text("Liv: " + liv, width - 100, 50);
+    text("Liv: " + liv, width - 80, 50);
 
 
     //Hvis du har 0 liv så taber du
     if (liv <= 0) {
         dead = true;
         noLoop();
-    }
-
-    text("score: " + score, width - 80, 30);
-    text("liv: " + liv, width - 80, 50)
+    }   
 
 
     //hvis du er død skal den skrive det som tekst og derefter skal der vises en knap til restart og du får nye liv
