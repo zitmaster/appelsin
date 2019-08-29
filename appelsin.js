@@ -1,5 +1,5 @@
 function Appelsin() {
-
+    // alle variablerne appelsinen skal bruge for at køre
     this.x = 0;
     this.y = 550;
     this.rad = 20;
@@ -12,18 +12,18 @@ function Appelsin() {
     this.newspeed = this.yspeed;
     this.x = this.rad;
 
-
+    //funktion der tegner cirklen og giver den farven col
     this.tegn = function () {
 
         fill(this.col);
         ellipse(this.x, this.y, this.rad * 2, this.rad * 2);
     }
-
+    // funktion der får appelsinen til at bevæge sig
     this.move = function () {
         this.x += this.xspeed;
         this.y += this.yspeed;
         this.yspeed += this.grav;
-
+        // if statement der får bolden til at falde hurtigere hvis den hopper ud af skærmen
         if (this.y < 0) {
             this.grav = 0.5;
         } else {
@@ -31,6 +31,7 @@ function Appelsin() {
         }
 
     }
+    //function der appelsinen til at forsvinde når den inden ryger ud eller bliver samlet op
     this.delete = function () {
 
         if (this.x > width || this.y > height) {
@@ -52,8 +53,8 @@ function Appelsin() {
             }
         }
 
-    }
-
+     }
+     // funktion der kun bliver brugt i singleplayer for at skyde bolden afsted igen eller vil singleplayer være lidt kedligt
     this.newshoot = function () {
         this.x = this.rad;
         this.y = random(400, 550);
