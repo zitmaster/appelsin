@@ -44,10 +44,10 @@ function Appelsin() {
         }
 
         if (this.x > mouseX - 40 && this.x < mouseX + 40 && this.y > mouseY - 40 && this.y < mouseY - 30 && this.yspeed >= 0) {
+            score += 1;
             if (multiplayer == false) {
                 this.newshoot();
             } else {
-                score += 1;
                 return true;
             }
         }
